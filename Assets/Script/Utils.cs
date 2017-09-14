@@ -92,4 +92,29 @@ public class Utils : MonoBehaviour {
 
         return tangentPoints;
     }
+
+    public static Vector3 GetTangentPoint(Vector3 outsidePoint, Vector3 circleCenter, float radius, bool isLeft)
+    {
+        if (isLeft)
+        {
+            return GetTangentPoints(outsidePoint, circleCenter, radius)[1];
+        }
+        else
+        {
+            return GetTangentPoints(outsidePoint, circleCenter, radius)[0];
+        }
+    }
+
+    public static Vector3 findVelocity(Vector3 startPoint, Vector3 endPoint, float unitPerSecond)
+    {
+        Vector3 velocityIn1Sec = endPoint - startPoint;
+        float length = Vector3.Distance(endPoint,startPoint);
+        float totalSecsToMove = length / unitPerSecond;
+
+        Vector3 trueVelocity = velocityIn1Sec / totalSecsToMove;
+
+        trueVelocity.z = 0;
+        Debug.Log("Utils findVelocity " + trueVelocity);
+        return trueVelocity;
+    }
 }
