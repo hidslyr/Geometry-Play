@@ -14,6 +14,7 @@ public class Triangle : MonoBehaviour {
     public List<Bullet> m_bulletList = new List<Bullet>();
 
     MeshFilter m_meshFilter;
+    MeshCollider m_meshCollider;
 
     // Use this for initialization
 
@@ -40,6 +41,10 @@ public class Triangle : MonoBehaviour {
         m_meshFilter = GetComponent<MeshFilter>();
 
         InitTriangle(m_meshFilter.mesh);
+
+        m_meshCollider = GetComponent<MeshCollider>();
+
+        m_meshCollider.sharedMesh = m_meshFilter.mesh;
     }
 
     void Start () {
@@ -62,28 +67,28 @@ public class Triangle : MonoBehaviour {
         if (UnityEngine.Input.GetMouseButton(0))
         {
             Vector2 pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            Debug.Log("mouseDown " + pos);
+            //Debug.Log("mouseDown " + pos);
 
             if (pos.x < Screen.width / 2)
             {
                 //rotate left
-                Debug.Log("rotate left");
+                //Debug.Log("rotate left");
                 Vector3 center = m_position;
                 Vector3[] vertices = m_meshFilter.mesh.vertices;
                 Vector3 angle = new Vector3(0, 0, 5);
 
-                m_meshFilter.mesh.vertices = RotateLeft(vertices, angle, center);
+                m_meshFilter.mesh.vertices = RotateTriangle(vertices, angle, center);
             }
             else
             {
                 //rotate right
-                Debug.Log("mouseDown " + pos);
+                //Debug.Log("mouseDown " + pos);
 
                 Vector3 center = m_position;
                 Vector3[] vertices = m_meshFilter.mesh.vertices;
                 Vector3 angle = new Vector3(0, 0, -5);
 
-                m_meshFilter.mesh.vertices = RotateLeft(vertices, angle, center);
+                m_meshFilter.mesh.vertices = RotateTriangle(vertices, angle, center);
             }
         }
 
@@ -96,10 +101,17 @@ public class Triangle : MonoBehaviour {
             m_bulletList.Add(bulllet);
             Debug.Log("create bullet " + worldpos);
         }
+
+        m_meshCollider.sharedMesh = m_meshFilter.mesh;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision");
     }
 
 
-    Vector3[] RotateLeft(Vector3[] vertices, Vector3 angle, Vector3 center)
+    Vector3[] RotateTriangle(Vector3[] vertices, Vector3 angle, Vector3 center)
     {
 
         Quaternion rotation = new Quaternion();
@@ -112,6 +124,7 @@ public class Triangle : MonoBehaviour {
 
             Debug.Log("after rotate " + vertices[i]);
         }
+
         return vertices;
     }
 
