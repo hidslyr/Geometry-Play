@@ -1,0 +1,6 @@
+Creator ID,Creator Speed (sec),Obstacle ID,Obstacle Time Spawn (sec),Obstacle Direction,Obstacle Speed (sec),Obstacle Acceleration (sec),Obstacle Size,Obstacle Deviation (px)
+CR00_0010,6,OB00,0,0,4,0,1,5
+CR00_0010,6,OB00,4,0,4,0,1,5
+CR00_0011,12,OB00,1,0,4,0,1,10
+CR00_0011,12,OB00,2,1,4,0,1,10
+CR00_0011,12,OB00,3,1,4,0,1,20

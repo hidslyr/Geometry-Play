@@ -15,6 +15,11 @@ public class CreatorManager : MonoBehaviour {
 
     List<Bullet> m_bulletList = new List<Bullet>();
 
+    void Awake()
+    {
+        DataLoader.Load("Assets/Level/Creator.csv");
+    }
+
     void Start() {
         m_instance = this;
 
