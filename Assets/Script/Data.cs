@@ -4,34 +4,39 @@ using UnityEngine;
 
 public class Data
 {
-    public struct Pattern
+    public class Pattern
     {
-        string m_ID;
-        float m_duration;
-        List<Dictionary<string, Creator>> m_creators;
+        public string m_ID;
+        public float m_duration;
+        public List<Creator> m_creators;
     }
 
-    public struct Creator
+    public class Creator
     {
-        string m_ID;
-        float m_speed;
-        List<Dictionary<string, Obstacle>> m_Obstacles;
+        public string m_ID;
+        public float m_speed;
+        public List<ObstacleInstance> m_Obstacles = null;
     }
 
-    public struct ObstacleInstance
+    public class ObstacleInstance
     {
-        Obstacle m_ObstaclePattern;
-        float m_timeSpawn;
-        float m_direction;
-        float m_speed;
-        float m_acceleration;
-        float m_size;
-        float m_deviation;
+        public string m_obstacleID;
+        public int m_timeSpawn;
+        public int m_direction;
+        public int m_speed;
+        public int m_acceleration;
+        public int m_size;
+        public int m_deviation;
+
+        public string GetDebugInfo()
+        {
+            return m_obstacleID + " " + m_timeSpawn + " " + m_direction + " " + m_speed + " " + m_acceleration + " " + m_size + " " + m_deviation;
+        }
     }
 
-    public struct Obstacle
+    public class Obstacle
     {
-        string m_ID;
-        string m_trajectory;
+        public string m_ID;
+        public string m_trajectory;
     }
 }

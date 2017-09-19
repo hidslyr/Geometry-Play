@@ -16,7 +16,7 @@ public class Background : MonoBehaviour {
 
         float m_screenHeightAtWS = Vector3.Distance(topEdge, bottomEdge);
 
-        Debug.Log("m_screenWidthAtWS " + m_screenWidthAtWS);
+        //Debug.Log("m_screenWidthAtWS " + m_screenWidthAtWS);
 
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
 

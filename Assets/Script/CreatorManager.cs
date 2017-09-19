@@ -15,9 +15,20 @@ public class CreatorManager : MonoBehaviour {
 
     List<Bullet> m_bulletList = new List<Bullet>();
 
+    List<Data.Obstacle> m_obstaclesData;
+    List<Data.Creator> m_creatorsData;
+
     void Awake()
     {
-        DataLoader.Load("Assets/Level/Creator.csv");
+        List<string> temp = DataLoader.Load("Assets/Level/Creator.csv");
+        m_creatorsData = DataLoader.LoadCreators(temp);
+
+        foreach(Data.Creator crt in m_creatorsData)
+        {
+            Debug.Log("Obstacle " + crt.m_ID + " " + crt.m_speed);
+        }
+
+        Debug.Log("test " + m_creatorsData[0].m_Obstacles[0].GetDebugInfo());
     }
 
     void Start() {
@@ -25,7 +36,6 @@ public class CreatorManager : MonoBehaviour {
 
         Vector3 startPosition = new Vector3(m_triangle.m_position.x, m_triangle.m_position.y + Utils.GetScreenWidthAtWS(), m_triangle.m_position.z + 1.1f);
         startPosition = Utils.Rotate(startPosition, new Vector3(0, 0, -30), m_triangle.m_position);
-        Debug.Log("hello2 " + startPosition);
         Instantiate<Creator>(m_creator, startPosition, new Quaternion(), this.transform);
     }	
 
