@@ -57,11 +57,16 @@ public class DataLoader : MonoBehaviour {
 
         foreach(string line in rawData)
         {
+            //Debug.Log("pattern parsing " + line);
             string[] parsedline = line.Split(',');
-            if (line.Length == 0)
+            if (parsedline.Length != 5)
+            {
+                Debug.Log("corrupted line " + line + " " + parsedline.Length);
                 continue;
+            }
 
             string patternID = parsedline[0];
+            bool isExisted = false;
 
             Data.Pattern parsedPattern = null;
             foreach(Data.Pattern pattern in ret)
@@ -69,6 +74,7 @@ public class DataLoader : MonoBehaviour {
                 if (pattern.m_ID.Equals(patternID))
                 {
                     parsedPattern = pattern;
+                    isExisted = true;
                     break;
                 }
             }
@@ -76,11 +82,27 @@ public class DataLoader : MonoBehaviour {
             if (parsedPattern == null)
             {
                 parsedPattern = new Data.Pattern();
+                parsedPattern.m_ID = parsedline[0];
             }
 
+            if (parsedPattern.m_creators == null)
+            {
+                parsedPattern.m_creators = new List<Data.CreatorInstance>();
+            }
+                   
+            parsedPattern.m_duration = Int32.Parse(parsedline[1]);
 
+            string creatorId = parsedline[2];
+            int spawnTime = Int32.Parse(parsedline[4]);
+            int direction = Int32.Parse(parsedline[3]) == 0 ? 1 : -1;
+
+            parsedPattern.m_creators.Add(new Data.CreatorInstance(creatorId, spawnTime, direction));
+
+            if (!isExisted)
+            {
+                ret.Add(parsedPattern);
+            }
         }
-
 
 
         return ret;
@@ -101,9 +123,6 @@ public class DataLoader : MonoBehaviour {
                 Debug.Log("corrupted line " + line + " " + parsedline.Length);
                 continue;
             }
-                
-
-            string obstacleID = parsedline[0];
 
             Data.Obstacle parsedObstacle = new Data.Obstacle();
 
@@ -183,5 +202,4 @@ public class DataLoader : MonoBehaviour {
 
         return ret;
     }
-
 }

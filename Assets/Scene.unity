@@ -154,6 +154,7 @@ MonoBehaviour:
   m_triangle: {fileID: 994500427}
   m_bulletTemplate: {fileID: 114068150567047390, guid: 8e984613fe48eac41ab0fe74a1af9721,
     type: 2}
+  m_totalTimePassed: 0
 --- !u!1 &320219812
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +564,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
+  m_Convex: 0
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}

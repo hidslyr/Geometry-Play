@@ -83,7 +83,6 @@ public class Triangle : MonoBehaviour {
             {
                 //rotate right
                 //Debug.Log("mouseDown " + pos);
-
                 Vector3 center = m_position;
                 Vector3[] vertices = m_meshFilter.mesh.vertices;
                 Vector3 angle = new Vector3(0, 0, -5);
@@ -91,6 +90,25 @@ public class Triangle : MonoBehaviour {
                 m_meshFilter.mesh.vertices = RotateTriangle(vertices, angle, center);
             }
         }
+
+        if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))
+        {
+            Vector3 center = m_position;
+            Vector3[] vertices = m_meshFilter.mesh.vertices;
+            Vector3 angle = new Vector3(0, 0, 5);
+
+            m_meshFilter.mesh.vertices = RotateTriangle(vertices, angle, center);
+        }
+
+        if (UnityEngine.Input.GetKey(KeyCode.RightArrow))
+        {
+            Vector3 center = m_position;
+            Vector3[] vertices = m_meshFilter.mesh.vertices;
+            Vector3 angle = new Vector3(0, 0, -5);
+
+            m_meshFilter.mesh.vertices = RotateTriangle(vertices, angle, center);
+        }
+
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.M))
         {
@@ -122,7 +140,7 @@ public class Triangle : MonoBehaviour {
             //vertices being the array of vertices of your mesh
             vertices[i] = rotation * (vertices[i] - center) + center;
 
-            Debug.Log("after rotate " + vertices[i]);
+            //Debug.Log("after rotate " + vertices[i]);
         }
 
         return vertices;

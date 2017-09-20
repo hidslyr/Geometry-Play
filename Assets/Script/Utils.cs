@@ -105,7 +105,7 @@ public class Utils : MonoBehaviour {
         }
     }
 
-    public static Vector3 findVelocity(Vector3 startPoint, Vector3 endPoint, float unitPerSecond)
+    public static Vector3 findVelocityByUnit(Vector3 startPoint, Vector3 endPoint, float unitPerSecond)
     {
         Vector3 velocityIn1Sec = endPoint - startPoint;
         float length = Vector3.Distance(endPoint,startPoint);
@@ -114,7 +114,19 @@ public class Utils : MonoBehaviour {
         Vector3 trueVelocity = velocityIn1Sec / totalSecsToMove;
 
         trueVelocity.z = 0;
-        Debug.Log("Utils findVelocity " + trueVelocity);
+        //Debug.Log("Utils findVelocity " + trueVelocity);
+        return trueVelocity;
+    }
+
+    public static Vector3 findVelocityByTime(Vector3 startPoint, Vector3 endPoint, float timeToFly)
+    {
+        Vector3 velocityIn1Sec = endPoint - startPoint;
+        float length = Vector3.Distance(endPoint, startPoint);
+
+        Vector3 trueVelocity = velocityIn1Sec / timeToFly;
+
+        trueVelocity.z = 0;
+        //Debug.Log("Utils findVelocity " + trueVelocity);
         return trueVelocity;
     }
 }

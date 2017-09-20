@@ -1,3 +1,4 @@
 Pattern ID,Pattern Duration (sec),Creator ID,Creator Direction,Creator Time Spawn (sec)
-PA01_SCTM_00,20,CR00_0010,0,0
-PA01_SCTM_00,20,CR00_0011,1,0
+PA01_SCTM_00,20,CR00_0010,0,5
+PA01_SCTM_00,20,CR00_0011,1,10
+PA01_SCTM_00,20,CR00_0012,1,5
