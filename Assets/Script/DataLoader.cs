@@ -179,7 +179,8 @@ public class DataLoader : MonoBehaviour {
 
             Data.ObstacleInstance newInstance = new Data.ObstacleInstance();
             newInstance.m_obstacleID = parsedline[2];
-            newInstance.m_timeSpawn = Int32.Parse(parsedline[3]);
+            newInstance.m_timeSpawn = float.Parse(parsedline[3]);
+            Debug.Log("creator float " + newInstance.m_timeSpawn);
             newInstance.m_direction = Int32.Parse(parsedline[4]);
             newInstance.m_speed = Int32.Parse(parsedline[5]);
             newInstance.m_acceleration = Int32.Parse(parsedline[6]);

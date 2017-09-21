@@ -39,7 +39,7 @@ public class Data
 
         }
 
-        public ObstacleInstance(string obstacleID, int timeSpawn, int direction, int speed, int acceleration, int size, int deviation)
+        public ObstacleInstance(string obstacleID, float timeSpawn, int direction, int speed, int acceleration, int size, int deviation)
         {
             m_obstacleID = obstacleID;
             m_timeSpawn = timeSpawn;
@@ -51,7 +51,7 @@ public class Data
         }
 
         public string m_obstacleID;
-        public int m_timeSpawn;
+        public float m_timeSpawn;
         public int m_direction;
         public int m_speed;
         public int m_acceleration;
